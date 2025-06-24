@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
@@ -5,9 +7,13 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
-    background-color: #e0e0e0;
-    color: darkred;
+    /* font-family: Arial, sans-serif; */
+    font-family: 'Inter', 'Arial', sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #cecece;
+    /* color: darkred; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -19,9 +25,76 @@ body {
     background-color: white;
     border-radius: 16px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
-    padding: 2rem;
     width: 100%;
     max-width: 600px;
     overflow: hidden;
     position: relative;
+}
+
+.screen {
+    display: none;
+    padding: 2rem;
+    text-align: center;
+}
+
+.screen.active {
+    display: block;
+}
+
+#start-screen h1 {
+    color: darkred;
+    margin-bottom: 1rem;
+}
+
+.question-header {
+    margin-bottom: 1rem;
+}
+
+#question-text {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: #353535;
+    line-height: 1.4;
+}
+
+.quiz-stats {
+    display: flex;
+    justify-content: space-between;
+    color: #686868;
+    margin-bottom: 10px;
+}
+
+.answers {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.answer-button {
+    background-color: beige;
+    color: #353535;
+    border: 2px solid #7b7b7b;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.35s ease;
+}
+
+.answer-button:hover {
+    background-color: rgb(220, 220, 200);
+    border-color: rgb(63, 63, 63);
+}
+
+.answer-button.correct {
+    background-color: #dbffd8;
+    border-color: #4caf50;
+    color: #4caf50;
+}
+
+.answer-button.incorrect {
+    background-color: #ffd8d8;
+    border-color: #d52323;
+    color: #d52323;
 }
