@@ -1,3 +1,4 @@
+// Const.s
 const startScreen = document.getElementById('start-screen');
 const quizScreen = document.getElementById('questions');
 const endScreen = document.getElementById('end-screen');
@@ -13,6 +14,7 @@ const resultMessage = document.getElementById('result-message');
 const restartButton = document.getElementById('restart-button');
 const progress = document.getElementById('progress');
 
+// Question set
 const questions = [
     {
         question: "What is the capital of the US?",
@@ -151,3 +153,40 @@ const questions = [
     }
 ];
 
+// Quiz var.s & const.s
+let currentQuestionIndex = 0;
+let score = 0;
+let answersDisabled = false;
+
+totalQuestionsSpan.textContent = questions.length;
+maxScoreSpan.textContent = questions.length;
+
+// Listeners
+startButton.addEventListener('click', startQuiz);
+restartButton.addEventListener('click', restartQuiz);
+
+// Func.s
+function startQuiz() {
+    // init
+    currentQuestionIndex = 0;
+    score = 0;
+    scoreSpan.textContent = score;
+
+    startScreen.classList.remove('active');
+    quizScreen.classList.add('active');
+
+    showQuestion();
+
+    console.log("Quiz started");
+}
+
+function showQuestion() {
+    answersDisabled = false;
+
+    const currentQuestion = questions[currentQuestionIndex];
+    questionNumberSpan.textContent = currentQuestionIndex++;
+}
+
+function restartQuiz() {
+    console.log("Quiz restarted");
+}
