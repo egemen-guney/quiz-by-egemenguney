@@ -12,6 +12,7 @@ const finalScoreSpan = document.getElementById('final-score');
 const maxScoreSpan = document.getElementById('max-score');
 const resultMessage = document.getElementById('result-message');
 const restartButton = document.getElementById('restart-button');
+const homeButton = document.getElementById('home-button');
 const progress = document.getElementById('progress');
 
 // Question set
@@ -164,6 +165,7 @@ maxScoreSpan.textContent = questions.length;
 // Listeners
 startButton.addEventListener('click', startQuiz);
 restartButton.addEventListener('click', restartQuiz);
+homeButton.addEventListener('click', home);
 
 // Func.s
 function startQuiz() {
@@ -237,12 +239,17 @@ function selectAnswer(event) {
 function showResults() {
     quizScreen.classList.remove('active');
     endScreen.classList.add('active');
-
+    
     finalScoreSpan.textContent = score;
     if (score === questions.length) resultMessage.textContent = "You aced it! Well done!";
     else if (score >= questions.length * 0.66) resultMessage.textContent = "Great job! Almost there!";
     else if (score >= questions.length * 0.33) resultMessage.textContent = "Good effort! Keep practicing!";
     else resultMessage.textContent = "Don't worry, try again! You can do it!";
+}
+
+function home() {
+    endScreen.classList.remove('active');
+    startScreen.classList.add('active');
 }
 
 function restartQuiz() {
