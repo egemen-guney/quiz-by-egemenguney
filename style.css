@@ -41,11 +41,19 @@ body {
     display: block;
 }
 
+/* Start Screen */
 #start-screen h1 {
     color: darkred;
-    margin-bottom: 1rem;
+    margin-bottom: 20px;
 }
 
+#start-screen p {
+    font-size: 1.1rem;
+    color: #353535;
+    margin-bottom: 20px;
+}
+
+/* Question Screen */
 .question-header {
     margin-bottom: 1rem;
 }
@@ -64,7 +72,7 @@ body {
     margin-bottom: 10px;
 }
 
-.answers {
+.answers { /*container*/
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -80,6 +88,7 @@ body {
     cursor: pointer;
     text-align: left;
     transition: all 0.35s ease;
+    font-size: 0.85rem;
 }
 
 .answer-button:hover {
@@ -97,4 +106,83 @@ body {
     background-color: #ffd8d8;
     border-color: #d52323;
     color: #d52323;
+}
+
+.progress-bar { /*container*/
+    height: 10px;
+    background-color: beige;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.progress {
+    height: 100%;
+    background-color: darkred;
+    width: 0%;
+    transition: width 0.35s ease;
+}
+
+/* End Screen */
+#end-screen h1 {
+    color: darkred;
+    margin-bottom: 20px;
+}
+
+.results { /*container*/
+    background-color: beige;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.results p {
+    font-size: 1.1rem;
+    color: #353535;
+    margin-bottom: 1rem;
+}
+
+#result-message {
+    font-size: 1.35rem;
+    color: darkred;
+}
+
+/* Buttons */
+button {
+    background-color: darkred;
+    font-size: 1.15rem;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: background-color 0.35s ease;
+}
+
+button:hover {
+    background-color: rgb(112.5, 0, 0);
+}
+
+/* RESPONSIVE STYLES */
+@media (max-width: 500px) {
+    .screen {
+        padding: 1rem;
+    }
+
+    .screen h1 {
+        font-size: 1.5rem;
+    }
+
+    #question-text {
+        font-size: 1.2rem;
+    }
+
+    .answer-button {
+        padding: 0.75rem;
+    }
+
+    button {
+        padding: 10px 12px;
+        font-size: 1rem;
+    }
 }
