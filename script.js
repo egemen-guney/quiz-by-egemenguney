@@ -175,18 +175,79 @@ function startQuiz() {
     startScreen.classList.remove('active');
     quizScreen.classList.add('active');
 
-    showQuestion();
-
     console.log("Quiz started");
+    
+    showQuestion();
 }
 
 function showQuestion() {
     answersDisabled = false;
 
     const currentQuestion = questions[currentQuestionIndex];
-    questionNumberSpan.textContent = currentQuestionIndex++;
+    questionNumberSpan.textContent = currentQuestionIndex + 1;
+    
+    const progressPercentage = (currentQuestionIndex / questions.length) * 100;
+    progress.style.width = progressPercentage + '%';
+    
+    questionText.textContent = currentQuestion.question;
+    
+    answerContainer.innerHTML = '';
+    currentQuestion.answers.forEach(answer => {
+        const button = document.createElement('button');
+        button.textContent = answer.text;
+        button.classList.add("answer-button");
+        
+        button.dataset.correct = answer.correct;
+        
+        button.addEventListener('click', selectAnswer);
+        answerContainer.appendChild(button); // add button to the UI
+    });
+}
+
+function selectAnswer(event) {
+    if (answersDisabled) return; // don't allow multiple selections, base case
+
+    answersDisabled = true; // let the user make the one and only selection
+
+    const selectedButton = event.target;
+    const correct = selectedButton.dataset.correct === 'true';
+
+    Array.from(answerContainer.children).forEach(button => {
+        if (button.dataset.correct === 'true') {
+            button.classList.add('correct');
+            console.log("Correct answer selected");
+        } else if (button === selectedButton) { // no need to check unselected buttons
+            button.classList.add('incorrect');
+            console.log("Incorrect answer selected");
+        }
+    });
+
+    if (correct) {
+        score++;
+        scoreSpan.textContent = score;
+    }
+
+    setTimeout(() => {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < questions.length) showQuestion();
+        else showResults();
+    }, 1000); // wait 1 second before showing the next question
+}
+
+function showResults() {
+    quizScreen.classList.remove('active');
+    endScreen.classList.add('active');
+
+    finalScoreSpan.textContent = score;
+    if (score === questions.length) resultMessage.textContent = "You aced it! Well done!";
+    else if (score >= questions.length * 0.66) resultMessage.textContent = "Great job! Almost there!";
+    else if (score >= questions.length * 0.33) resultMessage.textContent = "Good effort! Keep practicing!";
+    else resultMessage.textContent = "Don't worry, try again! You can do it!";
 }
 
 function restartQuiz() {
+    endScreen.classList.remove('active');
+    startScreen.classList.add('active');
     console.log("Quiz restarted");
+    startQuiz();
 }
