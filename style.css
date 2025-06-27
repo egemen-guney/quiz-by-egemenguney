@@ -53,6 +53,11 @@ body {
     margin-bottom: 20px;
 }
 
+.name-highlight {
+    font-weight: bold;
+    color: rgb(189, 0, 0);
+}
+
 /* Question Screen */
 .question-header {
     margin-bottom: 1rem;
@@ -195,7 +200,7 @@ button {
 }
 
 button:hover {
-    background-color: rgb(112.5, 0, 0);
+    background-color: rgb(112, 0, 0);
 }
 
 /* RESPONSIVE STYLES */
