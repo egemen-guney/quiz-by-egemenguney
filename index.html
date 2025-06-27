@@ -48,8 +48,9 @@
                 </div>
             </div>
 
-            <div class="quit">
+            <div class="quit-or-skip">
                 <button id="quit-button">Quit</button>
+                <button id="skip-button">Skip to End</button>
             </div>
         </div>
 
@@ -72,6 +73,14 @@
             <p>Your current progress will be lost.</p>
             <button id="confirm-quit-button">Confirm, quit</button>
             <button id="cancel-quit-button">Cancel</button>
+        </div>
+
+        <!-- SKIP SCREEN -->
+        <div class="screen" id="skip-screen">
+            <h1 id="skip-text">Are you sure you want to skip to the end?</h1>
+            <p>Only your progress up to the last question you answered will be reflected on your results.</p>
+            <button id="confirm-skip-button">Confirm, skip</button>
+            <button id="cancel-skip-button">Cancel</button>
         </div>
     </div>
     <script src="script.js"></script>

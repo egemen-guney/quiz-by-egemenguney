@@ -141,6 +141,23 @@ body {
     font-weight: bold;
 }
 
+/* Skip Screen */
+#skip-screen p {
+    font-size: 1.1rem;
+    color: #353535;
+    margin-bottom: 20px;
+}
+
+#skip-text {
+    color: darkred;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+}
+
+#confirm-skip-button {
+    font-weight: bold;
+}
+
 /* End Screen */
 #end-screen h1 {
     color: darkred;

@@ -2,6 +2,7 @@
 const startScreen = document.getElementById('start-screen');
 const quizScreen = document.getElementById('questions');
 const quitScreen = document.getElementById('quit-screen');
+const skipScreen = document.getElementById('skip-screen');
 const endScreen = document.getElementById('end-screen');
 const startButton = document.getElementById('start-button');
 const questionText = document.getElementById('question-text');
@@ -15,6 +16,9 @@ const resultMessage = document.getElementById('result-message');
 const quitButton = document.getElementById('quit-button');
 const quitConfirmButton = document.getElementById('confirm-quit-button');
 const quitCancelButton = document.getElementById('cancel-quit-button');
+const skipButton = document.getElementById('skip-button');
+const skipConfirmButton = document.getElementById('confirm-skip-button');
+const skipCancelButton = document.getElementById('cancel-skip-button');
 const restartButton = document.getElementById('restart-button');
 const homeButton = document.getElementById('home-button');
 const progress = document.getElementById('progress');
@@ -173,6 +177,9 @@ homeButton.addEventListener('click', home);
 quitButton.addEventListener('click', quit);
 quitConfirmButton.addEventListener('click', quitConfirm);
 quitCancelButton.addEventListener('click', quitCancel);
+skipButton.addEventListener('click', skip);
+skipConfirmButton.addEventListener('click', skipConfirm);
+skipCancelButton.addEventListener('click', skipCancel);
 
 // Func.s
 function startQuiz() {
@@ -247,8 +254,7 @@ function quit() {
     // Quit button functionality:
     // On click: Prompt the user to confirm quitting the quiz
     // If confirmed, redirect to the home screen
-    // OR redirect to the result screen with the progress made so far
-    // If pressed 'NO', return to the quiz screen
+    // If cancelled, return to the quiz screen
     console.log("Quit button clicked");
     quizScreen.classList.remove('active');
     quitScreen.classList.add('active');
@@ -276,15 +282,51 @@ function quitCancel() {
     // answersDisabled = false; // re-enable answers if the user cancels quitting
 }
 
+function skip() {
+    // Skip button functionality:
+    // On click: Prompt the user to confirm skipping to the end of the quiz
+    // If confirmed, redirect to the result screen with the progress made so far
+    // If cancelled, return to the quiz screen
+    console.log("Skip button clicked");
+    quizScreen.classList.remove('active');
+    skipScreen.classList.add('active');
+}
+
+function skipConfirm() {
+    console.log("Skip confirmed. Redirecting to results screen...");
+    skipScreen.classList.remove('active');
+    // endScreen.classList.add('active');
+    showResults(); // show results directly since skipping means no more questions
+}
+
+function skipCancel() {
+    console.log("Skip cancelled");
+    skipScreen.classList.remove('active');
+    quizScreen.classList.add('active');
+    // answersDisabled = false; // re-enable answers if the user cancels skipping
+}
+
 function showResults() {
     quizScreen.classList.remove('active');
     endScreen.classList.add('active');
+
+    const questionsAnswered = currentQuestionIndex;
+    maxScoreSpan.textContent = questionsAnswered;
     
     finalScoreSpan.textContent = score;
-    if (score === questions.length) resultMessage.textContent = "You aced it! Well done!";
-    else if (score >= questions.length * 0.66) resultMessage.textContent = "Great job! Almost there!";
-    else if (score >= questions.length * 0.33) resultMessage.textContent = "Good effort! Keep practicing!";
-    else resultMessage.textContent = "Don't worry, try again! You can do it!";
+    if (questionsAnswered === 0) {
+        resultMessage.textContent = "You didn't answer any questions!";
+        return; // no need to show further messages
+    }
+    if (questionsAnswered === questions.length) {
+        if (score === questionsAnswered) resultMessage.textContent = "You aced it! Well done!";
+        else if (score >= questionsAnswered * 0.66) resultMessage.textContent = "Great job! Almost there!";
+        else if (score >= questionsAnswered * 0.33) resultMessage.textContent = "Good effort! Keep practicing!";
+        else resultMessage.textContent = "Don't worry, try again! You can do it!";    
+    } else {
+        resultMessage.textContent = "You skipped some questions. Your score only reflects the questions answered.";
+    }
+    
 }
 
 function home() {
