@@ -124,6 +124,19 @@ body {
     transition: width 0.35s ease;
 }
 
+/* Quit Screen */
+#quit-screen p {
+    font-size: 1.1rem;
+    color: #353535;
+    margin-bottom: 20px;
+}
+
+#quit-text {
+    color: darkred;
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+}
+
 /* End Screen */
 #end-screen h1 {
     color: darkred;

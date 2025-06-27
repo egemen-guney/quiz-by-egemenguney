@@ -236,6 +236,14 @@ function selectAnswer(event) {
     }, 1000); // wait 1 second before showing the next question
 }
 
+function quit(event) {
+    // Quit button functionality:
+    // On click: Prompt the user to confirm quitting the quiz
+    // If confirmed, redirect to the home screen
+    // OR redirect to the result screen with the progress made so far
+    // If pressed 'NO', return to the quiz screen
+}
+
 function showResults() {
     quizScreen.classList.remove('active');
     endScreen.classList.add('active');
