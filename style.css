@@ -137,6 +137,10 @@ body {
     margin-bottom: 20px;
 }
 
+#confirm-quit-button {
+    font-weight: bold;
+}
+
 /* End Screen */
 #end-screen h1 {
     color: darkred;

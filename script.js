@@ -1,6 +1,7 @@
 // Const.s
 const startScreen = document.getElementById('start-screen');
 const quizScreen = document.getElementById('questions');
+const quitScreen = document.getElementById('quit-screen');
 const endScreen = document.getElementById('end-screen');
 const startButton = document.getElementById('start-button');
 const questionText = document.getElementById('question-text');
@@ -11,6 +12,9 @@ const scoreSpan = document.getElementById('score');
 const finalScoreSpan = document.getElementById('final-score');
 const maxScoreSpan = document.getElementById('max-score');
 const resultMessage = document.getElementById('result-message');
+const quitButton = document.getElementById('quit-button');
+const quitConfirmButton = document.getElementById('confirm-quit-button');
+const quitCancelButton = document.getElementById('cancel-quit-button');
 const restartButton = document.getElementById('restart-button');
 const homeButton = document.getElementById('home-button');
 const progress = document.getElementById('progress');
@@ -166,6 +170,9 @@ maxScoreSpan.textContent = questions.length;
 startButton.addEventListener('click', startQuiz);
 restartButton.addEventListener('click', restartQuiz);
 homeButton.addEventListener('click', home);
+quitButton.addEventListener('click', quit);
+quitConfirmButton.addEventListener('click', quitConfirm);
+quitCancelButton.addEventListener('click', quitCancel);
 
 // Func.s
 function startQuiz() {
@@ -236,12 +243,37 @@ function selectAnswer(event) {
     }, 1000); // wait 1 second before showing the next question
 }
 
-function quit(event) {
+function quit() {
     // Quit button functionality:
     // On click: Prompt the user to confirm quitting the quiz
     // If confirmed, redirect to the home screen
     // OR redirect to the result screen with the progress made so far
     // If pressed 'NO', return to the quiz screen
+    console.log("Quit button clicked");
+    quizScreen.classList.remove('active');
+    quitScreen.classList.add('active');
+}
+
+function quitConfirm() {
+    console.log("Quit confirmed. Redirecting to home screen...");
+    quitScreen.classList.remove('active');
+    startScreen.classList.add('active');
+
+    // (OPTOINAL): Depends on when the score is displayed, but for now, this works
+    // since the score is only displayed after starting the quiz.
+    // -------------------------------------------------
+    // currentQuestionIndex = 0; // reset the quiz state
+    // score = 0; // reset the score
+    // scoreSpan.textContent = score; // update the score display
+    // progress.style.width = '0%'; // reset the progress bar
+    // answersDisabled = false; // re-enable answers for the next quiz
+}
+
+function quitCancel() {
+    console.log("Quit cancelled");
+    quitScreen.classList.remove('active');
+    quizScreen.classList.add('active');
+    // answersDisabled = false; // re-enable answers if the user cancels quitting
 }
 
 function showResults() {
