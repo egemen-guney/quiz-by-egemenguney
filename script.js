@@ -318,7 +318,7 @@ function showResults() {
         resultMessage.textContent = "You didn't answer any questions!";
         return; // no need to show further messages
     }
-    if (questionsAnswered === questions.length) {
+    if (questionsAnswered === questions.length) { // all questions answered
         if (score === questionsAnswered) resultMessage.textContent = "You aced it! Well done!";
         else if (score >= questionsAnswered * 0.66) resultMessage.textContent = "Great job! Almost there!";
         else if (score >= questionsAnswered * 0.33) resultMessage.textContent = "Good effort! Keep practicing!";
