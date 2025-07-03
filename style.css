@@ -55,7 +55,7 @@ body {
 
 .name-highlight {
     font-weight: bold;
-    color: rgb(189, 0, 0);
+    color: red;
 }
 
 /* Question Screen */
