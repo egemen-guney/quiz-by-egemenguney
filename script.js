@@ -32,7 +32,9 @@ const questions = [
             { text: "Washington, D.C.", correct: true },
             { text: "Los Angeles", correct: false },
             { text: "Chicago", correct: false }
-        ]
+        ],
+        idx: 0,
+        difficulty: "medium"
     },
     {
         question: "What is the largest planet in our solar system?",
@@ -41,7 +43,9 @@ const questions = [
             { text: "Earth", correct: false },
             { text: "Saturn", correct: false },
             { text: "Mars", correct: false }
-        ]
+        ],
+        idx: 1,
+        difficulty: "hard"
     },
     {
         question: "What is the chemical symbol for water?",
@@ -50,7 +54,9 @@ const questions = [
             { text: "CO2", correct: false },
             { text: "CaCO3", correct: false },
             { text: "H2O", correct: true }
-        ]
+        ],
+        idx: 2,
+        difficulty: "easy"
     },
     {
         question: "What is the largest mammal in the world?",
@@ -59,7 +65,9 @@ const questions = [
             { text: "Blue Whale", correct: true },
             { text: "Giraffe", correct: false },
             { text: "Great White Shark", correct: false }
-        ]
+        ],
+        idx: 3,
+        difficulty: "medium"
     },
     {
         question: "What is the main ingredient in guacamole?",
@@ -68,7 +76,9 @@ const questions = [
             { text: "Tomato", correct: false },
             { text: "Onion", correct: false },
             { text: "Lime", correct: false }
-        ]
+        ],
+        idx: 4,
+        difficulty: "easy"
     },
     {
         question: "What is the largest continent on Earth?",
@@ -77,7 +87,9 @@ const questions = [
             { text: "Asia", correct: true },
             { text: "Europe", correct: false },
             { text: "North America", correct: false }
-        ]
+        ],
+        idx: 5,
+        difficulty: "medium"
     },
     {
         question: "Approximately how many people live in the world as of 2025?",
@@ -86,7 +98,9 @@ const questions = [
             { text: "9 billion", correct: false },
             { text: "7 billion", correct: false },
             { text: "8 billion", correct: true }
-        ]
+        ],
+        idx: 6,
+        difficulty: "medium"
     },
     {
         question: "What is the largest ocean on Earth?",
@@ -95,7 +109,9 @@ const questions = [
             { text: "Indian Ocean", correct: false },
             { text: "Arctic Ocean", correct: false },
             { text: "Pacific Ocean", correct: true }
-        ]
+        ],
+        idx: 7,
+        difficulty: "hard"
     },
     {
         question: "What is the world's largest desert?",
@@ -104,7 +120,9 @@ const questions = [
             { text: "Arabian Desert", correct: false },
             { text: "Gobi Desert", correct: false },
             { text: "Antarctic Desert", correct: true }
-        ]
+        ],
+        idx: 8,
+        difficulty: "hard"
     },
     {
         question: "What is the most spoken language in the world?",
@@ -113,7 +131,9 @@ const questions = [
             { text: "Mandarin Chinese", correct: true },
             { text: "Spanish", correct: false },
             { text: "Hindi", correct: false }
-        ]
+        ],
+        idx: 9,
+        difficulty: "medium"
     },
     {
         question: "What is the most widely watched sport in the world?",
@@ -122,7 +142,9 @@ const questions = [
             { text: "Soccer/Football", correct: true },
             { text: "American Football", correct: false },
             { text: "Tennis", correct: false }
-        ]
+        ],
+        idx: 10,
+        difficulty: "easy"
     },
     {
         question: "In what direction does the sun rise?",
@@ -131,7 +153,9 @@ const questions = [
             { text: "South", correct: false },
             { text: "East", correct: true },
             { text: "West", correct: false }
-        ]
+        ],
+        idx: 11,
+        difficulty: "easy"
     },
     {
         question: "Which country is the largest by land area?",
@@ -140,7 +164,9 @@ const questions = [
             { text: "China", correct: false },
             { text: "Canada", correct: false },
             { text: "Russia", correct: true }
-        ]
+        ],
+        idx: 12,
+        difficulty: "medium"
     },
     {
         question: "What is the smallest country in the world?",
@@ -149,7 +175,9 @@ const questions = [
             { text: "Nauru", correct: false },
             { text: "Vatican City", correct: true },
             { text: "San Marino", correct: false }
-        ]
+        ],
+        idx: 13,
+        difficulty: "medium"
     },
     {
         question: "What is the tallest building in the world?",
@@ -158,7 +186,9 @@ const questions = [
             { text: "Eiffel Tower", correct: false },
             { text: "Empire States Building", correct: false },
             { text: "Taipei 101", correct: false }
-        ]
+        ],
+        idx: 14,
+        difficulty: "medium"
     }
 ];
 
