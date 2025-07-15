@@ -4,6 +4,7 @@ const quizScreen = document.getElementById('questions');
 const quitScreen = document.getElementById('quit-screen');
 const skipScreen = document.getElementById('skip-screen');
 const endScreen = document.getElementById('end-screen');
+const difficultyButton = document.getElementById('difficulty-select');
 const startButton = document.getElementById('start-button');
 const questionText = document.getElementById('question-text');
 const answerContainer = document.getElementById('answers');
@@ -196,11 +197,13 @@ const questions = [
 let currentQuestionIndex = 0;
 let score = 0;
 let answersDisabled = false;
+let quizDifficulty = "";
 
 totalQuestionsSpan.textContent = questions.length;
 maxScoreSpan.textContent = questions.length;
 
 // Listeners
+difficultyButton.addEventListener('change', selectDifficulty);
 startButton.addEventListener('click', startQuiz);
 restartButton.addEventListener('click', restartQuiz);
 homeButton.addEventListener('click', home);
@@ -212,6 +215,16 @@ skipConfirmButton.addEventListener('click', skipConfirm);
 skipCancelButton.addEventListener('click', skipCancel);
 
 // Func.s
+function selectDifficulty() {
+    quizDifficulty = difficultyButton.value;
+
+    if(quizDifficulty) {
+        startButton.disabled = false;
+    } else {
+        startButton.disabled = true;
+    }
+}
+
 function startQuiz() {
     // init
     currentQuestionIndex = 0;
@@ -293,6 +306,9 @@ function quit() {
 function quitConfirm() {
     console.log("Quit confirmed. Redirecting to home screen...");
     quitScreen.classList.remove('active');
+    difficultyButton.value = "";
+    quizDifficulty = "";
+    startButton.disabled = true;
     startScreen.classList.add('active');
 
     // (OPTOINAL): Depends on when the score is displayed, but for now, this works
@@ -361,6 +377,9 @@ function showResults() {
 
 function home() {
     endScreen.classList.remove('active');
+    difficultyButton.value = "";
+    quizDifficulty = "";
+    startButton.disabled = true;  
     startScreen.classList.add('active');
 }
 
