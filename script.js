@@ -4,6 +4,7 @@ const quizScreen = document.getElementById('questions');
 const quitScreen = document.getElementById('quit-screen');
 const skipScreen = document.getElementById('skip-screen');
 const endScreen = document.getElementById('end-screen');
+const difficultyButton = document.getElementById('difficulty-select');
 const startButton = document.getElementById('start-button');
 const questionText = document.getElementById('question-text');
 const answerContainer = document.getElementById('answers');
@@ -24,6 +25,24 @@ const homeButton = document.getElementById('home-button');
 const progress = document.getElementById('progress');
 
 // Question set
+// NUMBERS:
+//  EASY: 10
+//  MEDIUM: 10
+//  HARD: 10
+// QUESTION TEMPLATE:
+/*
+{
+    question: "",
+    answers: [
+        { text: "", correct: true },
+        { text: "", correct: true },
+        { text: "", correct: true },
+        { text: "", correct: true }
+    ],
+    idx: 1,
+    difficulty: ""
+}
+*/
 const questions = [
     {
         question: "What is the capital of the US?",
@@ -100,7 +119,7 @@ const questions = [
             { text: "8 billion", correct: true }
         ],
         idx: 6,
-        difficulty: "medium"
+        difficulty: "easy"
     },
     {
         question: "What is the largest ocean on Earth?",
@@ -189,6 +208,171 @@ const questions = [
         ],
         idx: 14,
         difficulty: "medium"
+    },
+    {
+        question: "How many cards are there in a standard deck of playing cards?",
+        answers: [
+            { text: "54", correct: false },
+            { text: "50", correct: false },
+            { text: "52", correct: true },
+            { text: "48", correct: false }
+        ],
+        idx: 15,
+        difficulty: "medium"
+    },
+    {
+        question: "What is the only planet in our solar system to rotate clockwise on its axis?",
+        answers: [
+            { text: "Earth", correct: false },
+            { text: "Saturn", correct: false },
+            { text: "Jupiter", correct: false },
+            { text: "Venus", correct: true }
+        ],
+        idx: 16,
+        difficulty: "hard"
+    },
+    {
+        question: "What is the human body's largest organ?",
+        answers: [
+            { text: "The intestines", correct: false },
+            { text: "The stomach", correct: false },
+            { text: "The skin", correct: true },
+            { text: "The brain", correct: false }
+        ],
+        idx: 17,
+        difficulty: "medium"
+    },
+    {
+        question: "What does \"URL\" stand for?",
+        answers: [
+            { text: "User Reading List", correct: false },
+            { text: "User Ready Link", correct: false },
+            { text: "Uniform Resource Locator", correct: true },
+            { text: "Uniform Relay Location", correct: false }
+        ],
+        idx: 18,
+        difficulty: "hard"
+    },
+    {
+        question: "What does \"HTTP\" stand for?",
+        answers: [
+            { text: "Hypertext Transfer Protocol", correct: true },
+            { text: "Hypertext Transorm Protocol", correct: false },
+            { text: "Hash Text Transfer Part", correct: false },
+            { text: "Human Technology Translation Protocol", correct: false }
+        ],
+        idx: 19,
+        difficulty: "hard"
+    },
+    {
+        question: "What is the world's most populated city?",
+        answers: [
+            { text: "Beijing, China", correct: false },
+            { text: "Tokyo, Japan", correct: true },
+            { text: "Moscow, Russia", correct: false },
+            { text: "Paris, France", correct: false }
+        ],
+        idx: 20,
+        difficulty: "hard"
+    },
+    {
+        question: "Which blood type is a universal donor?",
+        answers: [
+            { text: "O positive", correct: false },
+            { text: "O negative", correct: true },
+            { text: "AB negative", correct: false },
+            { text: "A positive", correct: false }
+        ],
+        idx: 21,
+        difficulty: "hard"
+    },
+    {
+        question: "How many colors are there in a rainbow?",
+        answers: [
+            { text: "7", correct: true },
+            { text: "6", correct: false },
+            { text: "8", correct: false },
+            { text: "5", correct: false }
+        ],
+        idx: 22,
+        difficulty: "medium"
+    },
+    {
+        question: "How many planets make up our solar system?",
+        answers: [
+            { text: "6", correct: false },
+            { text: "7", correct: false },
+            { text: "8", correct: true },
+            { text: "9", correct: false }
+        ],
+        idx: 23,
+        difficulty: "hard"
+    },
+    {
+        question: "Which gas makes up most of the Earth's atmosphere?",
+        answers: [
+            { text: "Oxygen", correct: false },
+            { text: "Carbon Dioxide", correct: false },
+            { text: "Nitrogen", correct: true },
+            { text: "Hydrogen", correct: false }
+        ],
+        idx: 24,
+        difficulty: "hard"
+    },
+    {
+        question: "How many legs does a spider have?",
+        answers: [
+            { text: "6", correct: false },
+            { text: "8", correct: true },
+            { text: "10", correct: false },
+            { text: "12", correct: false }
+        ],
+        idx: 25,
+        difficulty: "easy"
+    },
+    {
+        question: "Which shape has four equal sides?",
+        answers: [
+            { text: "Triangle", correct: false },
+            { text: "Rectangle", correct: false },
+            { text: "Square", correct: true },
+            { text: "Circle", correct: false }
+        ],
+        idx: 26,
+        difficulty: "easy"
+    },
+    {
+        question: "How many sides does a hexagon have?",
+        answers: [
+            { text: "5", correct: false },
+            { text: "6", correct: true },
+            { text: "7", correct: false },
+            { text: "8", correct: false }
+        ],
+        idx: 27,
+        difficulty: "easy"
+    },
+    {
+        question: "Which gas do humans need to breathe to survive?",
+        answers: [
+            { text: "Carbon Dioxide", correct: false },
+            { text: "Hydrogen", correct: false },
+            { text: "Oxygen", correct: true },
+            { text: "Nitrogen", correct: false }
+        ],
+        idx: 28,
+        difficulty: "easy"
+    },
+    {
+        question: "What is the freezing point of water in degrees Celsius?",
+        answers: [
+            { text: "100°C", correct: false },
+            { text: "0°C", correct: true },
+            { text: "-10°C", correct: false },
+            { text: "32°C", correct: false }
+        ],
+        idx: 29,
+        difficulty: "easy"
     }
 ];
 
@@ -196,11 +380,13 @@ const questions = [
 let currentQuestionIndex = 0;
 let score = 0;
 let answersDisabled = false;
+let quizDifficulty = "";
 
 totalQuestionsSpan.textContent = questions.length;
 maxScoreSpan.textContent = questions.length;
 
 // Listeners
+difficultyButton.addEventListener('change', selectDifficulty);
 startButton.addEventListener('click', startQuiz);
 restartButton.addEventListener('click', restartQuiz);
 homeButton.addEventListener('click', home);
@@ -212,6 +398,16 @@ skipConfirmButton.addEventListener('click', skipConfirm);
 skipCancelButton.addEventListener('click', skipCancel);
 
 // Func.s
+function selectDifficulty() {
+    quizDifficulty = difficultyButton.value;
+
+    if(quizDifficulty) {
+        startButton.disabled = false;
+    } else {
+        startButton.disabled = true;
+    }
+}
+
 function startQuiz() {
     // init
     currentQuestionIndex = 0;
@@ -293,6 +489,9 @@ function quit() {
 function quitConfirm() {
     console.log("Quit confirmed. Redirecting to home screen...");
     quitScreen.classList.remove('active');
+    difficultyButton.value = "";
+    quizDifficulty = "";
+    startButton.disabled = true;
     startScreen.classList.add('active');
 
     // (OPTOINAL): Depends on when the score is displayed, but for now, this works
@@ -356,11 +555,13 @@ function showResults() {
     } else {
         resultMessage.textContent = "You skipped some questions. Your score only reflects the questions answered.";
     }
-    
 }
 
 function home() {
     endScreen.classList.remove('active');
+    difficultyButton.value = "";
+    quizDifficulty = "";
+    startButton.disabled = true;  
     startScreen.classList.add('active');
 }
 
