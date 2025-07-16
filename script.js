@@ -381,9 +381,12 @@ let currentQuestionIndex = 0;
 let score = 0;
 let answersDisabled = false;
 let quizDifficulty = "";
+let quizQuestions = [];
 
-totalQuestionsSpan.textContent = questions.length;
-maxScoreSpan.textContent = questions.length;
+// totalQuestionsSpan.textContent = questions.length;
+
+// maxScoreSpan.textContent = questions.length;
+
 
 // Listeners
 difficultyButton.addEventListener('change', selectDifficulty);
@@ -413,6 +416,9 @@ function startQuiz() {
     currentQuestionIndex = 0;
     score = 0;
     scoreSpan.textContent = score;
+    quizQuestions = pickQuestions(quizDifficulty);
+    totalQuestionsSpan.textContent = quizQuestions.length;
+    maxScoreSpan.textContent = quizQuestions.length;
 
     startScreen.classList.remove('active');
     quizScreen.classList.add('active');
@@ -422,13 +428,20 @@ function startQuiz() {
     showQuestion();
 }
 
+function pickQuestions(difficulty) {
+    const desiredQuestions = questions.filter(q => q.difficulty === difficulty);
+    return desiredQuestions;
+}
+
 function showQuestion() {
     answersDisabled = false;
 
-    const currentQuestion = questions[currentQuestionIndex];
+    // const currentQuestion = questions[currentQuestionIndex];
+    const currentQuestion = quizQuestions[currentQuestionIndex];
     questionNumberSpan.textContent = currentQuestionIndex + 1;
     
-    const progressPercentage = (currentQuestionIndex / questions.length) * 100;
+    // const progressPercentage = (currentQuestionIndex / questions.length) * 100;
+    const progressPercentage = (currentQuestionIndex / quizQuestions.length) * 100;
     progress.style.width = progressPercentage + '%';
     
     questionText.textContent = currentQuestion.question;
@@ -471,7 +484,8 @@ function selectAnswer(event) {
 
     setTimeout(() => {
         currentQuestionIndex++;
-        if (currentQuestionIndex < questions.length) showQuestion();
+        // if (currentQuestionIndex < questions.length) showQuestion();
+        if (currentQuestionIndex < quizQuestions.length) showQuestion();
         else showResults();
     }, 1000); // wait 1 second before showing the next question
 }
@@ -547,7 +561,8 @@ function showResults() {
         resultMessage.textContent = "You didn't answer any questions!";
         return; // no need to show further messages
     }
-    if (questionsAnswered === questions.length) { // all questions answered
+    // if (questionsAnswered === questions.length) { // all questions answered
+    if (questionsAnswered === quizQuestions.length) { // all questions answered
         if (score === questionsAnswered) resultMessage.textContent = "You aced it! Well done!";
         else if (score >= questionsAnswered * 0.66) resultMessage.textContent = "Great job! Almost there!";
         else if (score >= questionsAnswered * 0.33) resultMessage.textContent = "Good effort! Keep practicing!";
