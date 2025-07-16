@@ -177,6 +177,10 @@ body {
     margin-bottom: 20px;
 }
 
+.fas.fa-home {
+    font-size: 1rem;
+}
+
 .results { /*container*/
     background-color: beige;
     border-radius: 10px;
